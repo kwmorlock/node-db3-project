@@ -18,14 +18,14 @@ function findById(id){
 }
 
 function findSteps(id){
-    return db('schemes')
-    .join("steps", "steps.scehme_id", "scheme.id" )
-    .select("steps.id", "schemes.scheme_name", "steps.step_number", "steps.instructions")
+    return db("steps")
+    .join("schemes", "schemes.id", "steps.scheme_id" )
+    .select( "schemes.scheme_name", "steps.step_number", "steps.instructions")
     .where("schemes.id", id)
     .orderBy("steps.step_number")
 
 }
-
+//check seeds for findSteps info
 
 function add(scheme){
 return db("schemes")
